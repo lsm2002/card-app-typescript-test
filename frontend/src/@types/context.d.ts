@@ -5,6 +5,7 @@ export interface Entry {
   title: string;
   description: string;
   created_at: Date | string;
+  scheduled_for: Date | string | null;
 }
 
 export type EntryContextType = {
