@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.light {
+    --primary: 29 78 216;
+    --background: 255 255 255;
+    --card: 209 213 219;
+    --border: 0 0 0;
+}
