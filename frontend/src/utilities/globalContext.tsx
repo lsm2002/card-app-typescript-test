@@ -1,5 +1,6 @@
 import {createContext , useState, FC, ReactNode, useEffect} from 'react'
 import {Entry, EntryContextType} from '../@types/context'
+import { Theme } from './constants';
 import axios from 'axios'
 
 export const EntryContext = createContext<EntryContextType | null>(null);
@@ -7,10 +8,40 @@ export const EntryContext = createContext<EntryContextType | null>(null);
 export const EntryProvider: React.FC<{children : ReactNode}> = ({children}) => {
     const [entries, setEntries] = useState<Entry[]>([]);
 
+    const [theme, setTheme] = useState<Theme>(Theme.light);
+
+    const [isDefaultTheme, setIsDefaultTheme] = useState<boolean>(true);
+
+    const setThemeStates = async (theme: Theme | null) => {
+      if (theme) {
+        setTheme(theme)
+        setIsDefaultTheme(false)
+      } else {
+        setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.dark : Theme.light)
+        setIsDefaultTheme(true)
+      }
+    }
+
+    const saveTheme = async (theme: Theme | null) => {
+      if (theme) {
+        localStorage.theme = theme
+        
+      } else {
+        localStorage.removeItem('theme')
+      }
+      setThemeStates(theme)
+    }
+
     const initState = async () => {
         const data = await axios.get<Entry[]>('http://localhost:3001/get/')
         const initialStateBody = data.data
         setEntries(initialStateBody)
+
+        if ('theme' in localStorage && localStorage.theme in Theme){
+          setThemeStates(localStorage.theme as Theme)
+        } else {
+          saveTheme(null)
+        } 
     }
 
     useEffect(() => {
@@ -36,8 +67,9 @@ export const EntryProvider: React.FC<{children : ReactNode}> = ({children}) => {
         await axios.delete<Entry>(`http://localhost:3001/delete/${id}`)
         setEntries(e => e.filter(entry => entry.id != id))
     }
+
     return (
-        <EntryContext.Provider value={{ entries, saveEntry, updateEntry, deleteEntry }}>
+        <EntryContext.Provider value={{ entries, saveEntry, updateEntry, deleteEntry, theme, saveTheme, isDefaultTheme }}>
           {children}
         </EntryContext.Provider>
       )
