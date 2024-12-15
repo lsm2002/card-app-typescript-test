@@ -14,7 +14,10 @@ export default function Settings() {
           <button
             key={themeOption}
             onClick={() => saveTheme(themeOption)}
-            className={"ml-2 border px-2 py-1.5 rounded-md " + (!isDefaultTheme && theme == themeOption ? "bg-gray-200" : "bg-white")}
+            className={
+              "ml-2 border px-2 py-1.5 rounded-md " +
+              (!isDefaultTheme && theme == themeOption ? "bg-gray-200" : "bg-white")
+            }
           >
             {themeOption.charAt(0).toUpperCase() + themeOption.slice(1)}
           </button>
