@@ -5,7 +5,7 @@ export interface Entry {
   title: string;
   description: string;
   created_at: Date | string;
-};
+}
 
 export type EntryContextType = {
   entries: Entry[];
@@ -13,6 +13,6 @@ export type EntryContextType = {
   updateEntry: (id: string, entryData: Entry) => void;
   deleteEntry: (id: string) => void;
   theme: Theme;
-  saveTheme : (theme: Theme | null) => void;
+  saveTheme: (theme: Theme | null) => void;
   isDefaultTheme: boolean;
 };
