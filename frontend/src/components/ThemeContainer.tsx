@@ -1,8 +1,12 @@
-import { useContext } from "react";
-import { Entry, EntryContextType } from "../@types/context";
+import { useContext, ReactNode } from "react";
+import { EntryContextType } from "../@types/context";
 import { EntryContext } from "../utilities/globalContext";
 
-export default function ThemeContainer({ children }) {
+interface ChildrenProp {
+  children: ReactNode;
+}
+
+export default function ThemeContainer({ children }: ChildrenProp) {
   const { theme } = useContext(EntryContext) as EntryContextType;
   return <section className={"bg-background text-background-text h-screen " + theme}>{children}</section>;
 }

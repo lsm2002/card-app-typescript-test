@@ -17,7 +17,7 @@ export const EntryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       setTheme(theme);
       setIsDefaultTheme(false);
     } else {
-      // use default theme
+      // set default theme
       setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.dark : Theme.light);
       setIsDefaultTheme(true);
     }
@@ -27,6 +27,7 @@ export const EntryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     if (theme) {
       localStorage.theme = theme;
     } else {
+      // save default theme
       localStorage.removeItem("theme");
     }
     setThemeStates(theme);
