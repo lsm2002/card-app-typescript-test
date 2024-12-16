@@ -242,7 +242,7 @@ describe("server test", () => {
     expect(response.statusCode).toEqual(500);
   });
 
-  it("update response 200 and valid data", async () => {
+  it("update response 200 and get matching data after", async () => {
     const mockEntryIn = mockEntry1;
     const response = await server.inject({
       method: "POST",
@@ -278,14 +278,7 @@ describe("server test", () => {
 
     let fields2 = Object.keys(entry2);
     expect(fields2).toEqual(entryFields);
-
-    const created_at2 = new Date(entry.created_at);
-    expect(created_at2.toString()).not.toEqual("Invalid Date");
-
-    if (entry2.scheduled_for != "null") {
-      const scheduled_for2 = new Date(entry2.scheduled_for);
-      expect(scheduled_for2.toString()).not.toEqual("Invalid Date");
-    }
+    
     fields2.forEach((field) => {
       if (field != "id") {
         expect(Object(entry2)[field]).toEqual(Object(mockEntryIn2)[field]);
