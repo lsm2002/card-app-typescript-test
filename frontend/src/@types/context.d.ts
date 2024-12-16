@@ -14,6 +14,6 @@ export type EntryContextType = {
   updateEntry: (id: string, entryData: Entry) => void;
   deleteEntry: (id: string) => void;
   theme: Theme;
-  saveTheme: (theme: Theme | null) => void;
   isDefaultTheme: boolean;
+  saveTheme: (theme: Theme | null) => void;
 };

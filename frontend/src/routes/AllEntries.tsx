@@ -12,7 +12,7 @@ export default function AllEntries() {
         <h1 className="text-center font-semibold text-2xl m-5">You don't have any cards</h1>
         <p className="text-center font-medium text-md">
           Lets{" "}
-          <Link className="text-blue-400 underline underline-offset-1" to="/create">
+          <Link className="text-primary-light underline underline-offset-1" to="/create">
             Create One
           </Link>
         </p>

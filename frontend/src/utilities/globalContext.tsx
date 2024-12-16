@@ -16,7 +16,8 @@ export const EntryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     if (theme) {
       setTheme(theme);
       setIsDefaultTheme(false);
-    } else { // use default theme
+    } else {
+      // use default theme
       setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.dark : Theme.light);
       setIsDefaultTheme(true);
     }
@@ -68,7 +69,7 @@ export const EntryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   return (
-    <EntryContext.Provider value={{ entries, saveEntry, updateEntry, deleteEntry, theme, saveTheme, isDefaultTheme }}>
+    <EntryContext.Provider value={{ entries, saveEntry, updateEntry, deleteEntry, theme, isDefaultTheme, saveTheme }}>
       {children}
     </EntryContext.Provider>
   );
