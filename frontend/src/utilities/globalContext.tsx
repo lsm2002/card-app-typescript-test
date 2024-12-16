@@ -16,7 +16,7 @@ export const EntryProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     if (theme) {
       setTheme(theme);
       setIsDefaultTheme(false);
-    } else {
+    } else { // use default theme
       setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.dark : Theme.light);
       setIsDefaultTheme(true);
     }
