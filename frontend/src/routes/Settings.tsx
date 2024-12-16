@@ -16,14 +16,21 @@ export default function Settings() {
             onClick={() => saveTheme(themeOption)}
             className={
               "ml-2 px-2 py-1.5 rounded-md " +
-              (!isDefaultTheme && theme == themeOption ? "bg-button-colored text-button-colored-text hover:bg-button-colored-hover" : "bg-button text-button-text hover:bg-button-hover")
+              (!isDefaultTheme && theme == themeOption
+                ? "bg-button-colored text-button-colored-text hover:bg-button-colored-hover"
+                : "bg-button text-button-text hover:bg-button-hover")
             }
           >
             {themeOption.charAt(0).toUpperCase() + themeOption.slice(1)}
           </button>
         ))}
         <button
-          className={"ml-2 px-2 py-1.5 rounded-md " + (isDefaultTheme ? "bg-button-colored text-button-colored-text hover:bg-button-colored-hover" : "bg-button text-button-text hover:bg-button-hover")}
+          className={
+            "ml-2 px-2 py-1.5 rounded-md " +
+            (isDefaultTheme
+              ? "bg-button-colored text-button-colored-text hover:bg-button-colored-hover"
+              : "bg-button text-button-text hover:bg-button-hover")
+          }
           onClick={() => saveTheme(null)}
         >
           System Default
