@@ -278,7 +278,7 @@ describe("server test", () => {
 
     let fields2 = Object.keys(entry2);
     expect(fields2).toEqual(entryFields);
-    
+
     fields2.forEach((field) => {
       if (field != "id") {
         expect(Object(entry2)[field]).toEqual(Object(mockEntryIn2)[field]);
