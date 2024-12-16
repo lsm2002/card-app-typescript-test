@@ -26,7 +26,7 @@ export default function AllEntries() {
           <div
             id={entry.id}
             key={index}
-            className="bg-gray-300 shadow-md shadow-gray-500 m-3 p-4 rounded flex flex-col justify-between"
+            className="bg-card shadow-md shadow-card-shadow m-3 p-4 rounded flex flex-col justify-between text-card-text"
           >
             <h1 className="font-bold text-sm md:text-lg">{entry.title}</h1>
             <p className="text-center text-lg font-light md:mt-2 md:mb-4 mt-1 mb-3">{entry.description}</p>
@@ -46,7 +46,7 @@ export default function AllEntries() {
                   onClick={() => {
                     deleteEntry(entry.id as string);
                   }}
-                  className="m-1 md:m-2 p-1 font-semibold rounded-md bg-red-500 hover:bg-red-700"
+                  className="m-1 md:m-2 p-1 font-semibold rounded-md bg-button-negative hover:bg-button-negative-hover"
                 >
                   ✖
                 </button>
@@ -54,7 +54,7 @@ export default function AllEntries() {
                   onClick={() => {
                     navigate(`/edit/${entry.id}`, { replace: true });
                   }}
-                  className="m-1 md:m-2 p-1 font-semibold rounded-md bg-blue-500 hover:bg-blue-700"
+                  className="m-1 md:m-2 p-1 font-semibold rounded-md bg-button-colored hover:bg-button-colored-hover"
                 >
                   🖊
                 </button>

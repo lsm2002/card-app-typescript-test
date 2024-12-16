@@ -13,7 +13,7 @@ export default function EditEntry() {
   useEffect(() => {
     const entry = entries.filter((entry) => entry.id == id)[0];
     if (entry.scheduled_for == null) {
-      // don't allow null scheduled for
+      // handle old entries, don't allow null scheduled for
       entry.scheduled_for = new Date();
     }
     setNewEntry(entry);
@@ -31,9 +31,9 @@ export default function EditEntry() {
     .toISOString()
     .split("T")[0];
   return (
-    <section className="flex justify-center flex-col w-fit ml-auto mr-auto mt-10 gap-5 bg-gray-300 p-8 rounded-md">
+    <section className="flex justify-center flex-col w-fit ml-auto mr-auto mt-10 gap-5 bg-card text-card-text p-8 rounded-md">
       <input
-        className="p-3 rounded-md"
+        className="p-3 rounded-md bg-input text-input-text placeholder-input-placeholder"
         type="text"
         placeholder="Title"
         name="title"
@@ -41,7 +41,7 @@ export default function EditEntry() {
         onChange={handleInputChange}
       />
       <textarea
-        className="p-3 rounded-md"
+        className="p-3 rounded-md bg-input text-input-text placeholder-input-placeholder"
         placeholder="Description"
         name="description"
         value={newEntry.description}
@@ -50,7 +50,7 @@ export default function EditEntry() {
       <div className="grid grid-cols-[auto,1fr] gap-2">
         <div className="flex items-center">Date created: </div>
         <input
-          className="p-3 rounded-md"
+          className="p-3 rounded-md bg-input text-input-text placeholder-input-placeholder"
           type="date"
           name="created_at"
           value={new Date(newEntry.created_at).toISOString().split("T")[0]}
@@ -58,7 +58,7 @@ export default function EditEntry() {
         />
         <div className="flex items-center">Scheduled for: </div>
         <input
-          className="p-3 rounded-md"
+          className="p-3 rounded-md bg-input text-input-text placeholder-input-placeholder"
           type="date"
           name="scheduled_for"
           value={initialScheduledForValue}
@@ -69,7 +69,7 @@ export default function EditEntry() {
         onClick={(e) => {
           handleSend(e);
         }}
-        className="bg-blue-400 hover:bg-blue-600 font-semibold text-white p-3 rounded-md"
+        className="bg-button-colored hover:bg-button-colored-hover font-semibold text-button-colored-text p-3 rounded-md"
       >
         Update
       </button>
